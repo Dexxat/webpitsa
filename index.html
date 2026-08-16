@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Pitsa! - Pizza Artesanal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Outfit:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script crossorigin="anonymous" src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+<!-- Design tokens (colores, tipografía, espaciado) definidos en DESIGN.md -->
+<script src="assets/js/tailwind.config.js"></script>
+<link href="assets/css/styles.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Scroll Progress Indicator -->
+<div class="scroll-progress-container hidden md:block">
+<div class="scroll-progress-bar" id="scroll-progress" style="height: 10.0228%;"></div>
+</div>
+<!-- TopAppBar -->
+<header class="w-full z-50 bg-[#f4e6e6]/90 backdrop-blur-md transition-transform duration-300 py-6" id="main-header">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-[1400px] mx-auto">
+<nav class="hidden md:flex items-center w-full justify-between font-label-sm text-label-sm text-gray-800 uppercase tracking-wider">
+<a class="hover:text-black/80 transition-colors text-5xl" href="#">🍕</a>
+<a class="hover:text-black/80 transition-colors" href="#nosotros">Nosotros</a>
+<div class="font-headline-lg text-headline-lg font-bold text-gray-900 lowercase tracking-tight mx-8">
+        #SomosPitsa!
+    </div>
+<a class="hover:text-black/80 transition-colors" href="#menu">Nuestras Pitsas</a>
+<a class="flex items-center gap-2 text-[#25D366] hover:text-[#128C7E] transition-colors relative" href="https://wa.me/1234567890" target="_blank">
+<svg fill="currentColor" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg>
+</a>
+</nav>
+<!-- Mobile Header -->
+<div class="md:hidden flex justify-between items-center w-full">
+<a class="text-5xl" href="#">🍕</a>
+<div class="font-headline-lg text-headline-lg font-bold text-gray-900 tracking-tight">
+        #SomosPitsa!
+    </div>
+<a class="flex items-center gap-2 text-[#25D366]" href="https://wa.me/1234567890" target="_blank">
+<svg fill="currentColor" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg>
+</a>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative w-full min-h-[85vh] flex flex-col items-center justify-center px-4 md:px-8 py-section-padding overflow-hidden bg-primary pt-32">
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-b from-primary/50 to-primary-container/20 pointer-events-none"></div>
+<div class="relative z-10 w-full flex flex-col items-center justify-center text-center mt-12">
+<div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 w-full mb-12">
+<h1 class="font-display-lg text-[64px] md:text-[96px] lg:text-[120px] font-bold text-on-primary leading-none uppercase tracking-tighter">
+            PIZZA
+        </h1>
+<div class="w-56 h-56 md:w-72 md:h-72 rounded-full bg-white shadow-lg flex items-center justify-center shrink-0 animate-float overflow-hidden border-[1px] border-white">
+<img alt="Pitsa! Logo" class="w-full h-full object-contain mix-blend-multiply border border-white rounded-full p-2 grayscale contrast-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI-AyJDNyL-K1jjbdL8duxcVELWDqh7sbuvEaHXbOCWAXMNu4uPxwkN7sWo_1YpM5QboaZ8mGFMZIqsA7Xjmi14-AF_TM_ec_t2rVVhzJ_Mu7NvdMtj21ROHdEVnsmkFVitIFzOe26GBZuYxkMo3yA-QbobEuxxHC3h66c0z3tf18kIGmwv9I5vWiKraHVOcJOUdAtMkIHt4VjK8pqbKHSFW4xRosjMzdwfWQoiU0bJoS8zDYTbG05RCsS1ivy5AeRZQ">
+</div>
+<h1 class="font-display-lg text-[48px] md:text-[72px] lg:text-[96px] font-bold text-on-primary leading-none uppercase tracking-tighter whitespace-nowrap">
+            A LA PIEDRA
+        </h1>
+</div>
+<div class="w-[95vw] max-w-[1600px] mx-auto rounded-3xl overflow-hidden mt-8">
+<img alt="Pitsa 1" class="w-full h-auto object-contain border-4 border-white rounded-3xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQWBZ8fzUeDQS1C4tqQZ9og1oaKWXk1YBQs-y_QaKd9XI9Pdu3Uvqcg844hrr1n3Ib2Wp7yhSmaVfaozuLu6HeaBgXeBV4ehEBb7YKIuIseMsGTqfDtr8EJQaHv00QJKMzWWgWRDguvMtuEU4G6M3adA3YL_Qb13nJuhQKe1T6YZAqRZ4v3HhCDWSIMH6LTPsEtbf6OFnLfX11A6-6YbK-wqiVUUHLiGrtp3YoC9hpwDeip4NY8S7i2fC4J3Z6L-99Vw">
+</div>
+</div>
+</section>
+<!-- Brand Info Section -->
+<section class="w-full px-margin-mobile md:px-margin-desktop py-24 relative overflow-hidden bg-surface-container font-headline-lg" id="nosotros">
+<div class="absolute inset-0 z-0">
+</div>
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-24 relative z-10">
+<div class="w-full max-w-5xl mx-auto flex flex-col items-center text-center p-10 rounded-3xl bg-transparent">
+<h2 class="font-headline-xl text-on-surface font-bold mb-8 text-[48px] md:text-[64px]">SOMOS PITSA!</h2>
+<p class="font-headline-lg text-on-surface-variant mb-16 leading-relaxed font-medium max-w-4xl text-2xl md:text-3xl text-center">
+            Y hacemos pizzas, hechas con mucha dedicacion y la mejor materia prima posible. Amasamos cada día respetando los tiempos de fermentación, utilizamos ingredientes locales, recetas perfeccionadas y el toque inconfundible de nuestro horno de leña. Nos tomamos en serio cada sabor y detalle. Nuestros hornos estan en Muñiz y hacemos envios y take-away.
+        </p>
+<div class="flex flex-col md:flex-row items-stretch justify-center gap-6 w-full max-w-4xl">
+<div class="flex-1 p-8 rounded-3xl bg-white/60 backdrop-blur-md border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] flex flex-col items-center justify-center gap-4 hover:-translate-y-2 transition-transform duration-300">
+<span class="material-symbols-outlined text-5xl text-primary mb-2">location_on</span>
+<h3 class="font-headline-md text-on-surface font-bold text-xl">¿Dónde?</h3>
+<p class="font-body-lg text-on-surface-variant text-center font-medium">Pedro Goyena 1079<br>Muñiz</p>
+</div>
+<div class="flex-1 p-8 rounded-3xl bg-primary text-white shadow-xl flex flex-col items-center justify-center gap-4 transform md:-translate-y-6 md:rotate-2 hover:rotate-0 transition-all duration-300">
+<span class="material-symbols-outlined text-5xl text-white mb-2">local_pizza</span>
+<h3 class="font-headline-md font-bold text-2xl text-center leading-tight">Pizza a<br>la piedra</h3>
+<p class="font-body-md text-white/90 italic font-medium mt-2">48 hs de levado en frío.</p>
+</div>
+<div class="flex-1 p-8 rounded-3xl bg-white/60 backdrop-blur-md border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] flex flex-col items-center justify-center gap-4 hover:-translate-y-2 transition-transform duration-300">
+<span class="material-symbols-outlined text-5xl text-primary mb-2">schedule</span>
+<h3 class="font-headline-md text-on-surface font-bold text-xl">¿Cuándo?</h3>
+<p class="font-body-lg text-on-surface-variant text-center font-medium">Jueves a Domingo<br>20:00 a 23:00 hs.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Menu Section -->
+<section class="w-full px-margin-mobile md:px-margin-desktop py-24 scroll-mt-20" id="menu" style="background-color: rgb(255, 255, 255); background-image: linear-gradient(90deg, rgba(232, 44, 42, 0.06) 50%, transparent 50%), linear-gradient(rgba(232, 44, 42, 0.06) 50%, transparent 50%); background-size: 80px 80px;">
+<div class="max-w-[1200px] mx-auto">
+<div class="flex flex-col items-center text-center mb-16">
+<h2 class="font-headline-xl text-[56px] font-bold text-primary mb-6 uppercase tracking-tight">Nuestras Pitsas!</h2>
+<div class="w-32 h-2 bg-primary rounded-full mb-6"></div>
+</div>
+<!-- Bento Grid Layout for Menu -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Pizza Card 1 -->
+<div class="rounded-2xl overflow-hidden card-shadow border-2 border-primary/20 group flex flex-col h-full hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 bg-surface-container-low">
+<div class="relative h-72 overflow-hidden bg-primary/5 flex items-center justify-center p-8">
+<img class="w-full h-full object-contain hover-float drop-shadow-xl" data-alt="Margherita" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhTHnTEYh3veO0SUU6HrNpiCUzwChJZUBv6P7jfDAswK2fmYVfnsh-SqrACDHbD-9_uNB1mZljCtWxlxPgG-32rhGWWtvR_nM6b71sbhhSdlwCi0hY1qHh13YqX1xoX5hY2nZKwMoNTtkfMYgcBTETV4YuTh1C9MNFAii5uRAzLp8CK8bEvHfq7oyO2N1a_OT0Qaf1Og5AyS2nGd2WKUACZ68E42kMvZu5OzCOaRC8UBWUbQgq6raGNBW6yLRCelqQjw">
+</div>
+<div class="p-8 flex flex-col flex-grow bg-surface-paper"><div class="flex justify-between items-start mb-4"><h3 class="font-headline-md text-on-surface font-bold text-2xl">Margherita</h3><span class="font-headline-md text-primary font-bold text-xl">$20,000</span></div><p class="text-on-surface-variant text-base font-body-md">Masa, salsa de tomate, mozzarella, tomates en rodajas, pesto, oliva, parmesano.</p></div>
+</div>
+<!-- Pizza Card 2 -->
+<div class="rounded-2xl overflow-hidden card-shadow border-2 border-primary/20 group flex flex-col h-full hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 bg-surface-container-low">
+<div class="relative h-72 overflow-hidden bg-primary/5 flex items-center justify-center p-8">
+<img class="w-full h-full object-contain hover-float drop-shadow-xl" data-alt="Jamón y Morrón" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZjV3KDsOrRWdW6anFj7hPVd-RuKh6mHP8aS_34MHOCRg2-2sIwzYZ7Nd7OUA1xufXlKpULWFUjDl2hjvmKgX4xtL9sSp8B2LtsZqOy2yuiQLldbp7o4mL8QdVZqFl1_cAgcBjOKQU_Ls00sDAY9iH2iMGIfGk7C71KLTuzHWLPghLbDEYXx621uFABCu4_ih4YoEYZ-luZvqBXjJlA2BJoed1ZrHKXRPIB2MRi14iYJcFdPe44w3HftBBmBfskSDLvA">
+</div>
+<div class="p-8 flex flex-col flex-grow bg-surface-paper"><div class="flex justify-between items-start mb-4"><h3 class="font-headline-md text-on-surface font-bold text-2xl">Jamón y Morrón</h3><span class="font-headline-md text-primary font-bold text-xl">$23,000</span></div><p class="text-on-surface-variant text-base font-body-md">Masa, salsa de tomate, mozzarella, jamón natural, morrón rojo y verde, oliva, orégano.</p></div>
+</div>
+<!-- Pizza Card 3 -->
+<div class="rounded-2xl overflow-hidden card-shadow border-2 border-primary/20 group flex flex-col h-full hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 bg-surface-container-low">
+<div class="relative h-72 overflow-hidden bg-primary/5 flex items-center justify-center p-8">
+<img class="w-full h-full object-contain hover-float drop-shadow-xl" data-alt="Rúcula y Jamón Crudo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB514JVFEjoYdj1UgM4cFlZu6ccqE_3iTh-Hh1GTP3RsBLA_RWtoR24iKZiF6WWNE69Xmkco6snUvU9cqvaGPEjmx5uM3P6Bcr0e8sFToxBJWsvLdcUpDzYF8GDV-RdnGCyJzsDU0a6JLEnrRuTr4S1msl8jQhpJy_nSVyUbJ39rqwTdaqtxDp1pXDRd1Kotinu2-h3tDOpOK-xLMUqlLAR8GVj3UnJSsMbSX-6LijVqt2v_jzoVGfN7OiP2VzpMAmA5A">
+</div>
+<div class="p-8 flex flex-col flex-grow bg-surface-paper"><div class="flex justify-between items-start mb-4"><h3 class="font-headline-md text-on-surface font-bold text-2xl">Rúcula y Jamón Crudo</h3><span class="font-headline-md text-primary font-bold text-xl">$23,000</span></div><p class="text-on-surface-variant text-base font-body-md">Masa, salsa de tomate, mozzarella, jamón crudo estilo parma, parmesano, oliva.</p></div>
+</div>
+<!-- Pizza Card 4 -->
+<div class="rounded-2xl overflow-hidden card-shadow border-2 border-primary/20 group flex flex-col h-full hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 bg-surface-container-low">
+<div class="relative h-72 overflow-hidden bg-primary/5 flex items-center justify-center p-8">
+<img class="w-full h-full object-contain hover-float drop-shadow-xl" data-alt="Provolone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnsvnF3W613hQYl7XMe1DnjrKh48Kp-VYJo7pP-wIJ8BfXjmT8LDujSgkFlCbHj3Cx--hMKrSJHzaqjUMZmwyWuwICheruDO1x-bVEWqn6afyJF_Or1sCm9erz9SvUX1TJKRiot8vdJ5_U7LK79h-wAdUBoT6VPbY6bh_t3bJafpg05P28GgOKqY4KukXWyzNgCnP_I6sesjzBgJEzsVg39XuNMrdn0U6x4l5pREvEsf-rDIQL1fVMhh559VV2smfj_A">
+</div>
+<div class="p-8 flex flex-col flex-grow bg-surface-paper"><div class="flex justify-between items-start mb-4"><h3 class="font-headline-md text-on-surface font-bold text-2xl">Provolone</h3><span class="font-headline-md text-primary font-bold text-xl">$19,000</span></div><p class="text-on-surface-variant text-base font-body-md">Masa, salsa de tomate, mozzarella, provolone, oliva, orégano y aceitunas.</p></div>
+</div>
+<!-- Pizza Card 5 -->
+<div class="rounded-2xl overflow-hidden card-shadow border-2 border-primary/20 group flex flex-col h-full hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 bg-surface-container-low">
+<div class="relative h-72 overflow-hidden bg-primary/5 flex items-center justify-center p-8">
+<img class="w-full h-full object-contain hover-float drop-shadow-xl" data-alt="Especial" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKiYx2YQqJ2d5x4H3BC-td2BfjjLpBfef5Uiw2oytOT1XJaFEWp9zxQky2ZjUvRPMf_-4M61S6917d8GG_LNBfMm0sKe2JqY3Zd-wVwfNjduTAqv5tk_s6QIVZZrOycM8Vb_N6ajoRvGVos8-nAnKsVS31mw5HERXDdaL825IAkgzw8gJdC8LMYA5W49sVH8y97ZhB7jGAFOFjWDKLCAtye0bXaBX8Gecv-tlOzq-k764eoKZA5fwjErcoA4Ty9t1E4w">
+</div>
+<div class="p-8 flex flex-col flex-grow bg-surface-paper"><div class="flex justify-between items-start mb-4"><h3 class="font-headline-md text-on-surface font-bold text-2xl">Especial</h3><span class="font-headline-md text-primary font-bold text-xl">$22,000</span></div><p class="text-on-surface-variant text-base font-body-md">Masa, salsa de tomate, berenjenas, parmesano, provolone y oliva.</p></div>
+</div>
+<!-- Pizza Card 6 -->
+<div class="rounded-2xl overflow-hidden card-shadow border-2 border-primary/20 group flex flex-col h-full hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 bg-surface-container-low">
+<div class="relative h-72 overflow-hidden bg-primary/5 flex items-center justify-center p-8">
+<img class="w-full h-full object-contain hover-float drop-shadow-xl" data-alt="Cheese" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMg2s7yk_pLQZ1LYuuueFemnN-yplQmZ9iYdzTPIVNDYk9VltppZTajtWfIlH1ckH4BTn98dOT_FmhVXwd-X3wDeFSGtPe4x5-sxTdrUbUleHFWaHQMNERBhfHNSYycO_iTdvYnDWkCM5_l-0XKomEH9CwNsq7l1e1g8tvDaaqP_cjFf_P1K8ZrwR2pkG-wQnXh4BxQvvf0AJKhdkwVbMzAtJF73FY4lgsyn-2TA4FjvfNY2bbEWV_10HUzahz3mD4rw">
+</div>
+<div class="p-8 flex flex-col flex-grow bg-surface-paper"><div class="flex justify-between items-start mb-4"><h3 class="font-headline-md text-on-surface font-bold text-2xl">Cheese</h3><span class="font-headline-md text-primary font-bold text-xl">$17,000</span></div><p class="text-on-surface-variant text-base font-body-md">Masa, salsa de tomate, mozzarella, parmesano, albahaca y oliva.</p></div>
+</div>
+<!-- Pizza Card 7 -->
+<div class="rounded-2xl overflow-hidden card-shadow border-2 border-primary/20 group flex flex-col h-full hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 bg-surface-container-low">
+<div class="relative h-72 overflow-hidden bg-primary/5 flex items-center justify-center p-8">
+<img class="w-full h-full object-contain hover-float drop-shadow-xl" data-alt="Fugazzeta" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvo5fzXQ7qDq5c5PmcfEgJ6S_M0EHLl0knRB9COvKdKkq8Gki2Nr6zAd73mF_Qp6OvIyUY11PMlFAu3iIAhh5qsm8oByudQA7btpI13AU7B1L3B_7UDBAK4_VHAaR19r25E5Gt-xP6MZ7Skey9R0rN0TYrkauRWwxKGX95frFe1JRpn160blnEGLseVbQfjJh7nchtEtiEDA7QjR9_fAC96iPJ41CpEcLPyoU6X_gXMc5YK9xAW6CaLc7LEym5e0WqSg">
+</div>
+<div class="p-8 flex flex-col flex-grow bg-surface-paper"><div class="flex justify-between items-start mb-4"><h3 class="font-headline-md text-on-surface font-bold text-2xl">Fugazzeta</h3><span class="font-headline-md text-primary font-bold text-xl">$19,000</span></div><p class="text-on-surface-variant text-base font-body-md">Masa, mozzarella, cebolla, orégano y oliva.</p></div>
+</div>
+<!-- Pizza Card 8 -->
+<div class="rounded-2xl overflow-hidden card-shadow border-2 border-primary/20 group flex flex-col h-full hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 bg-surface-container-low">
+<div class="relative h-72 overflow-hidden bg-primary/5 flex items-center justify-center p-8">
+<img class="w-full h-full object-contain hover-float drop-shadow-xl" data-alt="Pepperoni" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLkzc0Zs2iJJ8MCMwkjfUySi-bf7gWL8CFH2U8QEjTfuD-9NXPoC703ifCnWpo3v70fHJcMI_xzJsnw2PwSXEkT6IvfrBSLiLP-CoSmvsi9DmsEm6sTDwr5P8XOhN6PrKApSN4jtrw0_kcPXnGmcRqNPzdZuakgCWixtaCW6nVcluy8tzc_-92aNl5Vb-bil80VJ29sRZOxNtFWMoiWW77IGveFx7VS_x9D09Ie3FEMfDDPb4mz0QlDSBf_PHOIavwJg">
+</div>
+<div class="p-8 flex flex-col flex-grow bg-surface-paper"><div class="flex justify-between items-start mb-4"><h3 class="font-headline-md text-on-surface font-bold text-2xl">Pepperoni</h3><span class="font-headline-md text-primary font-bold text-xl">$21,000</span></div><p class="text-on-surface-variant text-base font-body-md">Masa, salsa de tomate, mozzarella, pepperoni, miel picante, oliva.</p></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating WhatsApp Action Button -->
+<a aria-label="Contactar por WhatsApp" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-lg z-40 hover:scale-105 transition-transform animate-pulse-soft flex items-center justify-center" href="https://wa.me/1234567890" target="_blank">
+<svg fill="currentColor" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg>
+</a>
+<!-- Footer -->
+<footer class="w-full mt-section-padding bg-surface-container-high border-t-4 border-primary text-on-surface">
+<div class="w-full py-12 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter max-w-[1400px] mx-auto">
+<div class="font-headline-md text-headline-md font-bold uppercase">
+                Pitsa!
+            </div>
+<div class="font-headline-xl font-bold lowercase tracking-tight text-[48px]">
+                #SomosPitsa!
+            </div>
+<div class="font-body-md text-body-md text-sm text-center md:text-right text-on-surface-variant">
+                © 2024 Pitsa! Pizzería Artesanal. De Muñiz al mundo.
+            </div>
+</div>
+</footer>
+<!-- Interactive Logic -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollProgressBar = document.getElementById('scroll-progress');
+            
+            // Scroll Progress Logic
+            window.addEventListener('scroll', () => {
+                const totalScroll = document.documentElement.scrollTop;
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scroll = `${totalScroll / windowHeight * 100}%`;
+                if(scrollProgressBar) {
+                    scrollProgressBar.style.height = scroll;
+                }
+            });
+        });
+    </script>
+
+
+</body></html>

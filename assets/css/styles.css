@@ -1,0 +1,149 @@
+/**
+ * Pitsa! — hoja de estilos del sitio.
+ * Los valores de :root reflejan 1:1 los design tokens de DESIGN.md
+ * (colores, tipografía, espaciado, radios) para que este archivo sea
+ * la referencia visual, separada del HTML.
+ */
+
+:root {
+  /* Colores */
+  --color-surface: #f9f9f9;
+  --color-surface-dim: #dadad9;
+  --color-surface-bright: #f9f9f9;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f4f3f3;
+  --color-surface-container: #eeeeed;
+  --color-surface-container-high: #e8e8e8;
+  --color-surface-container-highest: #e2e2e2;
+  --color-on-surface: #1a1c1c;
+  --color-on-surface-variant: #5d3f3c;
+  --color-inverse-surface: #2f3131;
+  --color-inverse-on-surface: #f1f1f0;
+  --color-outline: #916f6b;
+  --color-outline-variant: #e6bdb8;
+  --color-surface-tint: #c00012;
+  --color-primary: #e82c2a;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #e12626;
+  --color-on-primary-container: #fffbff;
+  --color-inverse-primary: #ffb4ab;
+  --color-secondary: #026d40;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #9af3b9;
+  --color-on-secondary-container: #0d7144;
+  --color-tertiary: #006389;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #2f7ca3;
+  --color-on-tertiary-container: #fcfcff;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-background: #f9f9f9;
+  --color-on-background: #1a1c1c;
+  --color-surface-variant: #e2e2e2;
+  --color-surface-bg: #f9f9f9;
+  --color-surface-card: #ffffff;
+  --color-accent-red: #e82c2a;
+  --color-whatsapp: #25d366;
+  --color-whatsapp-hover: #128c7e;
+
+  /* Tipografía */
+  --font-display: "Outfit", sans-serif;
+  --font-body: "Hanken Grotesk", sans-serif;
+
+  /* Espaciado (base 8px) */
+  --spacing-base: 8px;
+  --spacing-gutter: 24px;
+  --spacing-margin-mobile: 20px;
+  --spacing-margin-desktop: 64px;
+  --spacing-section-padding: 80px;
+
+  /* Radios */
+  --radius-sm: 0.25rem;
+  --radius-default: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.material-symbols-outlined[data-weight="fill"] {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Scrollbar a medida */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-on-surface);
+}
+
+/* Sombra táctil sutil (Elevación & Profundidad, DESIGN.md) */
+.card-shadow {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Pulso para el FAB de WhatsApp */
+@keyframes pulse-soft {
+  0% { box-shadow: 0 0 0 0 rgba(3, 109, 64, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(3, 109, 64, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(3, 109, 64, 0); }
+}
+.animate-pulse-soft {
+  animation: pulse-soft 2s infinite;
+}
+
+/* Flotado del logo hero */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Efecto de flotado al hacer hover sobre imágenes con fondo transparente */
+.hover-float {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.group:hover .hover-float {
+  transform: translateY(-10px) scale(1.05);
+}
+
+/* Indicador de progreso de scroll */
+.scroll-progress-container {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 200px;
+  width: 2px;
+  background-color: var(--color-primary);
+  z-index: 40;
+  opacity: 0.3;
+}
+.scroll-progress-bar {
+  width: 100%;
+  background-color: var(--color-primary);
+  height: 0%;
+  transition: height 0.1s ease-out;
+}
+
+/* Máscara degradada para la imagen del hero */
+.image-gradient-mask {
+  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+}
